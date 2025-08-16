@@ -1,0 +1,13 @@
+/* Override Redoc top header and description */
+.redoc-wrap h1,
+.redoc-wrap h2,
+.redoc-wrap h3,
+.redoc-wrap p,
+.redoc-wrap a {
+  color: #bfbfbf !important;
+}
+
+/* Optional: adjust background if needed */
+.redoc-wrap {
+  background-color: #111827 !important;
+}

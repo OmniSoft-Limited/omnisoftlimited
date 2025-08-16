@@ -1,0 +1,38 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Omnisoft BD API",
+        "version": "1.0.0",
+        "description": "Official API documentation for Omnisoft BD website"
+    },
+    "paths": {
+        "/api/v1/root": {
+            "get": {
+                "summary": "Ping the server",
+                "description": "Returns if the server is up",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "ping": {
+                                                "type": "string",
+                                                "example": "pong"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+    }
+}

@@ -4,6 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
+    "push:mongo": "prisma db push --schema=prisma/mongo/schema.prisma",
+    "migrate:postgres": "prisma migrate dev --schema=prisma/postgresql/schema.prisma",
+    "push:postgres": "prisma db push --schema=prisma/postgresql/schema.prisma",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -12,7 +15,12 @@
     "@prisma/client": "^6.14.0",
     "next": "15.4.6",
     "react": "19.1.0",
-    "react-dom": "19.1.0"
+    "react-dom": "19.1.0",
+    "redoc": "^2.5.0",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1",
+    "zod": "^4.0.17",
+    "zustand": "^5.0.7"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
