@@ -8,3 +8,149 @@ datasource db {
   url      = env("POSTGRES_URL")
 }
 
+enum Language {
+  PHP
+  JAVASCRIPT
+  TYPESCRIPT
+  PYTHON
+  GOLANG
+  RUST
+  JAVA
+  KOTLIN
+  DART
+  CSHARP
+}
+
+enum Database {
+  POSTGRESQL
+  MYSQL
+  MONGODB
+  SQLITE
+  FIREBASE
+  REDIS
+}
+
+enum Framework {
+  REACT
+  NEXTJS
+  SOLIDJS
+  SVELTE
+  VUE
+  NUXT
+  LARAVEL
+  DJANGO
+  FLASK
+  FASTAPI
+  EXPRESS
+  SPRING
+  ACTIXWEB
+  ROCKET
+  FLUTTER
+  DOTNET
+  REACTNATIVE
+}
+
+enum Library {
+  REDUX
+  ZUSTAND
+  AXIOS
+  DOCS
+  TAILWIND
+  SHADCN
+  DAISYUI
+  FRAMERMOTION
+  GIT
+  GITHUB
+  CLICKUP
+  REACTQUERY
+  JQUERY
+  MATERIALUI
+  TAURI
+
+  REST
+  GRAPHQL
+  GRPC
+}
+
+enum Deployment {
+  DOCKER
+  KUBERNETES
+  GITHUB_ACTIONS
+  SERVERLESS
+  AWS
+  HEROKU
+  DIGITALOCEAN
+  LINODE
+}
+
+enum Technology {
+  Language
+  Database
+  Framework
+  Library
+  Deployment
+}
+
+enum Department {
+  BACKEND
+  FRONTEND
+  DATABASE
+  GRAPHICS
+  MARKETING
+  MANAGEMENT
+  FINANCE
+  CONTENT
+  PRESENTATION
+  COMMUNICATION
+  OTHERS
+}
+
+model Member {
+  id             String       @id @default(cuid())
+  name           String
+  email          String
+  username       String       @unique
+  designation    String
+  departments    Department[]
+  profilepic     String
+  bio            String
+  facebook_link  String
+  instagram_link String?
+  website_link   String?
+  expertise      Technology[]
+  blogs          Blog[]       @relation("author")
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+}
+
+model Blog {
+  id          String       @id @default(cuid())
+  title       String       @unique
+  image       String?
+  description String
+  body        String
+  published   Boolean      @default(false)
+  author      Member       @relation(fields: [authorId], references: [id], name: "author")
+  authorId    String
+  tags        Technology[]
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+}
+
+model Project {
+  id          String       @id @default(cuid())
+  title       String       @unique
+  image       String?
+  description String
+  body        String
+  published   Boolean      @default(false)
+  techstack   Technology[]
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+}

@@ -3,7 +3,6 @@
 import { useEffect, useRef } from "react";
 import Script from "next/script";
 import "./redoc.css"; // <-- import your global overrides
-import React from "react";
 
 export default function DocsPage() {
     const redocRef = useRef<HTMLDivElement>(null);

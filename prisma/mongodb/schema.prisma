@@ -5,5 +5,56 @@ generator client {
 
 datasource db {
   provider = "mongodb"
-  url      = env("MONGO_URL")
+  url      = env("MONGODB_URL")
+}
+
+model Rating {
+  id      String  @id @default(uuid()) @map("_id")
+  name    String?
+  ip      String?
+  email   String?
+  comment String?
+  rating  Int     @default(5)
+}
+
+model Feedback {
+  id           String  @id @default(uuid()) @map("_id")
+  name         String
+  designation  String
+  comment      String
+  project_link String?
+  rating       Int     @default(5)
+}
+
+model PricePredictionCache {
+  id         String   @id @default(uuid()) @map("_id")
+  title      String?
+  params     String?
+  price      Float
+  timestamp  DateTime
+  expirytime DateTime
+}
+
+enum Role {
+  USER
+  AI
+}
+
+model Chat {
+  id        String   @id @default(uuid()) @map("_id")
+  message   String
+  role      Role
+  timestamp DateTime @default(now())
+
+  userConversation ChatConversation? @relation("UserChatRelation")
+  aiConversation   ChatConversation? @relation("AIChatRelation")
+}
+
+model ChatConversation {
+  id         String   @id @default(uuid()) @map("_id")
+  userchat   Chat     @relation("UserChatRelation", fields: [userchatId], references: [id])
+  userchatId String   @unique 
+  aichat     Chat     @relation("AIChatRelation", fields: [aichatId], references: [id])
+  aichatId   String   @unique 
+  timestamp  DateTime @default(now())
 }
