@@ -13,9 +13,9 @@ export const MemberSchema = z.object({
         .min(1, 'At least one department is required'),
     profilepic: z.url('Invalid profile picture URL'),
     bio: z.string().max(1000, 'Bio too long'),
-    facebook_link: z.string().url('Invalid Facebook link'),
-    instagram_link: z.string().url('Invalid Instagram link').optional(),
-    website_link: z.string().url('Invalid Website link').optional(),
+    facebook_link: z.url('Invalid Facebook link'),
+    instagram_link: z.url('Invalid Instagram link').optional(),
+    website_link: z.url('Invalid Website link').optional(),
     expertise: z.array(TechnologyEnum).optional(),
     blogs: z.any().optional(), // relation validated separately if needed
 

@@ -1,7 +1,7 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "Omnisoft BD API",
+        "title": "Omnisoft Limited API",
         "version": "1.0.0",
         "description": "Official API documentation for Omnisoft BD website"
     },
@@ -22,7 +22,7 @@
                                         "properties": {
                                             "ping": {
                                                 "type": "string",
-                                                "example": "pong"
+                                                "example": "lolipop"
                                             }
                                         }
                                     }

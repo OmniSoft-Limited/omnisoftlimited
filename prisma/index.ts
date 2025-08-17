@@ -1,4 +1,3 @@
-// prisma/postgres.ts
 import { PrismaClient as PostgresClient } from '.prisma/postgres';
 import { PrismaClient as MongoClient } from '.prisma/mongo';
 

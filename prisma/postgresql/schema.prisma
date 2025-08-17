@@ -149,9 +149,9 @@ model Project {
   body        String
   published   Boolean      @default(false)
   techstack   Technology[]
+  link        String?
 
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
   deletedAt DateTime?
 }
-
