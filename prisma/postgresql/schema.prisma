@@ -154,3 +154,4 @@ model Project {
   updatedAt DateTime  @updatedAt
   deletedAt DateTime?
 }
+
